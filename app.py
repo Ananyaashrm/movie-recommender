@@ -1,6 +1,10 @@
 import requests
 import streamlit as st
 import pickle
+import os
+
+
+TMDB_API_KEY = os.getenv("TMDB_API_KEY")
 
 st.set_page_config(
     page_title="MovieLens AI",
@@ -103,7 +107,7 @@ similarity = pickle.load(open('similarity.pkl', 'rb'))
 
 def fetch_poster(movie_id):
 
-    url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key=4e4c25c091028ac4469258dbdc7560eb"
+    url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={TMDB_API_KEY}"
 
     data = requests.get(url)
 
